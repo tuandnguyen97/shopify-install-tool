@@ -60,9 +60,9 @@ class AR(unittest.TestCase):
             shopify_Page.click_add_review_btn()
             sleep(5)
      
-    # def tearDown(self):
-    #     self.driver.quit()
-    #     self.assertEqual([], self.verificationErrors)
+    def tearDown(self):
+        self.driver.quit()
+        self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()
