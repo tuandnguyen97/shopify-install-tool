@@ -47,20 +47,22 @@ class AR(unittest.TestCase):
         # ERROR: Caught exception [ERROR: Unsupported command [resizeWindow | 1920,937 | ]]
         for i in range(0, 1):
             driver.get("https://thinhtest100.myshopify.com/products/test-1")
+            driver.maximize_window()
             shopify_Page.click_write_review_btn()
             shopify_Page.set_fill_name(name)
-            sleep(3)
+            sleep(2)
             shopify_Page.set_fill_email(email)
-            sleep(3)
+            sleep(2)
             shopify_Page.set_fill_content(content)
-            sleep(3)
+            sleep(2)
             shopify_Page.set_add_photo(random.choice(choice_image))
-            sleep(5)
+            sleep(2)
             shopify_Page.click_add_review_btn()
+            sleep(5)
      
-    def tearDown(self):
-        self.driver.quit()
-        self.assertEqual([], self.verificationErrors)
+    # def tearDown(self):
+    #     self.driver.quit()
+    #     self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()

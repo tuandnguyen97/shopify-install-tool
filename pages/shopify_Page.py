@@ -11,12 +11,12 @@ from pages.locators import *
 class writeReview:
     URL = "https://thinhtest100.myshopify.com/products/test-1"
 
-    btn_write_review = (By.XPATH, WRITE_REVIEW_BTN_CLASS)
+    btn_write_review = (By.XPATH, WRITE_REVIEW_BTN_XPATH)
     fill_name = (By.ID, FILL_NAME_ID)
     fill_email = (By.ID, FILL_EMAIL_ID)
     fill_content = (By.ID, FILL_CONTENT_ID)
     add_photo = (By.XPATH, ADD_PHOTO_BTN_XPATH)
-    btn_add_review = (By.ID, ADD_REVIEW_BTN_ID)
+    btn_add_review = (By.XPATH, ADD_REVIEW_BTN_XPATH)
 
     # Setup driver
     def __init__(self,driver):
@@ -71,6 +71,3 @@ class writeReview:
             return alert_text
         finally: self.accept_next_alert = True
     
-    def tearDown(self):
-        self.driver.quit()
-        self.assertEqual([], self.verificationErrors)
