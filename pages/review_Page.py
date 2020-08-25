@@ -9,7 +9,6 @@ from time import sleep
 from pages.locators import *
 
 class writeReview:
-    URL = "https://thinhtest100.myshopify.com/products/test-1"
 
     btn_write_review = (By.XPATH, WRITE_REVIEW_BTN_XPATH)
     fill_name = (By.ID, FILL_NAME_ID)
@@ -18,10 +17,14 @@ class writeReview:
     add_photo = (By.XPATH, ADD_PHOTO_BTN_XPATH)
     btn_add_review = (By.XPATH, ADD_REVIEW_BTN_XPATH)
 
-    # Setup driver
     def __init__(self,driver):
         self.driver = driver
     
+    # def window_size(browser):
+    #     browser.maximize_window()
+
+    def load(self):
+        self.driver.get(self.URL)
 
     # Write Review
     def click_write_review_btn(self):

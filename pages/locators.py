@@ -6,3 +6,48 @@ FILL_EMAIL_ID = 'your_email'
 FILL_CONTENT_ID = 'content'
 ADD_PHOTO_BTN_XPATH = '//input[@type="file"]'
 ADD_REVIEW_BTN_XPATH = '//*[@id="btn-add-review"]'
+
+
+# Create Order
+
+PRODUCT_1_XPATH = '//*[@id="Collection"]/ul[1]/li[1]/div/a'
+PRODUCT_2_XPATH = '//*[@id="Collection"]/ul[1]/li[2]/div/a'
+PRODUCT_3_XPATH = '//*[@id="Collection"]/ul[1]/li[3]/div/a'
+BUY_IT_NOW_BTN_XPATH = '//*[text() = "Buy it now"]'
+FILL_EMAIL_PHONE_XPATH = '//*[@id="checkout_email_or_phone"]'
+FILL_FIRST_NAME_XPATH = '//*[@id="checkout_shipping_address_first_name"]'
+FILL_LAST_NAME_XPATH = '//*[@id="checkout_shipping_address_last_name"]'
+FILL_ADDRESS_XPATH = '//*[@id="checkout_shipping_address_address1"]'
+FILL_CITY_XPATH = '//*[@id="checkout_shipping_address_city"]'
+FILL_POSTAL_CODE_XPATH = '//*[@id="checkout_shipping_address_zip"]'
+NEXT_BUTTON_XPATH = '//*[@id="continue_button"]'
+
+# Add card test
+IFRAME_REGISTER_CARD_NUMBER = '//iframe[@title="Field container for: Card number"]'
+IFRAME_REGISTER_CARD_NAME = "//iframe[@title='Field container for: Name on card']"
+IFRAME_REGISTER_CARD_EXPIRY = "//iframe[@title='Field container for: Expiration date (MM / YY)']"
+IFRAME_REGISTER_CARD_SECURITY = "//iframe[@title='Field container for: Security code']"
+NUMBER_CARD_XPATH = '//*[@id="number"]'
+# NUMBER_CARD_XPATH = '//*[class="field__input field__input--iframe-container"]'
+NAME_CARD_XPATH = '//*[@id="name"]'
+EXPIRY_CARD_XPATH = '//*[@id="expiry"]'
+SECURITY_CARD_XPATH = '//*[@id="verification_value"]'
+
+
+# # Add card
+# driver.find_element_by_xpath('//*[@id="number"]').send_keys(1)
+
+# driver.find_element_by_xpath('//*[@id="name"]').send_keys("card test")
+
+# driver.find_element_by_xpath('//*[@id="expiry"]').send_keys(1122)
+
+# driver.find_element_by_xpath('//*[@id="verification_value"]').send_keys(112)
+
+# # Pay
+# driver.find_element_by_xpath('//*[@id="continue_button"]/span').click()
+
+# sleep(4)
+
+# # Click logo
+# driver.find_element_by_xpath('/html/body/div/div/div/header/a').click()
+

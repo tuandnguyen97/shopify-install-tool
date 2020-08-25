@@ -11,7 +11,7 @@ from datetime import datetime
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
-from pages.shopify_Page import writeReview
+from pages.review_Page import writeReview
 from selenium.webdriver import Chrome
 from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
@@ -19,7 +19,8 @@ from faker import Faker
 
 
 
-class AR(unittest.TestCase):
+class addReview(unittest.TestCase):
+
     def setUp(self):
         self.driver = webdriver.Chrome(ChromeDriverManager().install())
         # self.geckodriver_autoinstaller.install()
@@ -30,6 +31,7 @@ class AR(unittest.TestCase):
 
     def testcase_1(self):
         driver = self.driver
+        url = "https://thinhtest100.myshopify.com/products/test-1"
 
         # image
         image_1 = "C:\\Users\\PC\\Downloads\\anh-gif-dong-dep_054757287.gif"
@@ -41,23 +43,24 @@ class AR(unittest.TestCase):
         name = fake.name()
         email = fake.ascii_free_email()
         content = fake.paragraphs()
-        shopify_Page = writeReview(driver)
+        
+        review_Page = writeReview(driver)
 
         # Label: Test
         # ERROR: Caught exception [ERROR: Unsupported command [resizeWindow | 1920,937 | ]]
         for i in range(0, 1):
-            driver.get("https://thinhtest100.myshopify.com/products/test-1")
+            driver.get(url)
             driver.maximize_window()
-            shopify_Page.click_write_review_btn()
-            shopify_Page.set_fill_name(name)
+            review_Page.click_write_review_btn()
+            review_Page.set_fill_name(name)
             sleep(2)
-            shopify_Page.set_fill_email(email)
+            review_Page.set_fill_email(email)
             sleep(2)
-            shopify_Page.set_fill_content(content)
+            review_Page.set_fill_content(content)
             sleep(2)
-            shopify_Page.set_add_photo(random.choice(choice_image))
+            review_Page.set_add_photo(random.choice(choice_image))
             sleep(2)
-            shopify_Page.click_add_review_btn()
+            review_Page.click_add_review_btn()
             sleep(5)
      
     def tearDown(self):
