@@ -34,20 +34,16 @@ EXPIRY_CARD_XPATH = '//*[@id="expiry"]'
 SECURITY_CARD_XPATH = '//*[@id="verification_value"]'
 
 
-# # Add card
-# driver.find_element_by_xpath('//*[@id="number"]').send_keys(1)
+# Add order 
 
-# driver.find_element_by_xpath('//*[@id="name"]').send_keys("card test")
-
-# driver.find_element_by_xpath('//*[@id="expiry"]').send_keys(1122)
-
-# driver.find_element_by_xpath('//*[@id="verification_value"]').send_keys(112)
-
-# # Pay
-# driver.find_element_by_xpath('//*[@id="continue_button"]/span').click()
-
-# sleep(4)
-
-# # Click logo
-# driver.find_element_by_xpath('/html/body/div/div/div/header/a').click()
-
+FILL_EMAIL_SHOPIFY_XPATH = '//*[@id="account_email"]'
+NEXT_BTN_SHOPIFY_XPATH = '//*[@id="body-content"]/div[1]/div[2]/div/form/button'
+FILL_PASSWORD_SHOPIFY_XPATH = '//*[@id="account_password"]'
+LOGIN_BTN_SHOIFY_XPATH = '//*[@id="login_form"]/div[2]/ul/button'
+PRODUCT_BTN_XPATH = '//span[text()="Products"]/ancestor::a'
+ADD_PRODUCT_BTN_XPATH = '//span[text()="Add product"]/ancestor::a'
+FILL_PRODUCT_NAME_XPATH = '//input[@name="title"]'
+FILL_PRICE_PRODUCT_XPATH = '//input[@name="price"]'
+FILL_QUANTITY_PRODUCT_XPATH = '//*[@id="AdjustQuantityPopoverTextFieldActivator"]'
+FILL_TYPE_PRODUCT_XPATH = '//input[@placeholder="e.g. Shirts"]'
+SAVE_PRODUCT_BTN_XPATH = '//span[text()="Save"]/ancestor::button' 
