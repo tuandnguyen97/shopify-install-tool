@@ -45,22 +45,22 @@ class createOrder:
     def click_select_product_1_btn(self):
         btn_product_1 = self.driver.find_element(*self.btn_product_1)
         btn_product_1.click()
-        sleep(3)
+        sleep(2)
 
     def click_select_product_2_btn(self):
         btn_product_2 = self.driver.find_element(*self.btn_product_2)
         btn_product_2.click()
-        sleep(3)
+        sleep(2)
 
     def click_select_product_3_btn(self):
         btn_product_3 = self.driver.find_element(*self.btn_product_3)
         btn_product_3.click()        
-        sleep(3)
+        sleep(2)
 
     def click_buy_now(self):
         btn_buy_it_now_btn = self.driver.find_element(*self.btn_buy_it_now_btn)
         btn_buy_it_now_btn.click()
-        sleep(2)
+        sleep(1)
 
     def click_next_btn(self):
         btn_next = self.driver.find_element(*self.btn_next)

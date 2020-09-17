@@ -20,6 +20,7 @@ class addProducts:
     fill_price_product_shopify = (By.XPATH, FILL_PRICE_PRODUCT_XPATH)
     fill_quantity_product_shopify = (By.XPATH, FILL_QUANTITY_PRODUCT_XPATH)
     fill_type_product_shopify = (By.XPATH, FILL_TYPE_PRODUCT_XPATH)
+    add_photo_product = (By.XPATH, ADD_PHOTO_PRODUCT_XPATH)
     btn_save_product_shopify = (By.XPATH, SAVE_PRODUCT_BTN_XPATH)
 
 
@@ -73,6 +74,10 @@ class addProducts:
     def set_fill_product_type_shopify(self, product_type):
         fill_type_product_shopify = self.driver.find_element(*self.fill_type_product_shopify)
         fill_type_product_shopify.send_keys(product_type)
+
+    def set_add_photo_product(self, photo):
+        add_photo_product = self.driver.find_element(*self.add_photo_product)
+        add_photo_product.send_keys(photo)
 
     def click_save_product_btn_shopify(self):
         btn_save_product_shopify = self.driver.find_element(*self.btn_save_product_shopify)

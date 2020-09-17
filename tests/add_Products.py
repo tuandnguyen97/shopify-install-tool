@@ -31,7 +31,7 @@ class createProducts(unittest.TestCase):
 
     def testcase_1(self):
         driver = self.driver
-        url = "https://store-testing-01.myshopify.com/admin"
+        url = "https://store-billing-01.myshopify.com/admin"
         # url = "https://store-vile-11.myshopify.com/46107132053/checkouts/16dc72b2fdeb10ef698b27c140d3fa4e?previous_step=shipping_method&step=payment_method"
         # Name
         fake = Faker()
@@ -49,16 +49,35 @@ class createProducts(unittest.TestCase):
         phone = "+1201555"+ rnd_value
         # mail = fake.email()
         name_phone = [email_fake, phone]
+        
+        # image
+        image_1 = "C:\\Users\\PC\\Pictures\\image\\1.jpg"
+        image_2 = "C:\\Users\\PC\\Pictures\\image\\2.jpg"
+        image_3 = "C:\\Users\\PC\\Pictures\\image\\3.jpg"
+        image_4 = "C:\\Users\\PC\\Pictures\\image\\4.jpg"
+        image_5 = "C:\\Users\\PC\\Pictures\\image\\5.jpg"
+        image_6 = "C:\\Users\\PC\\Pictures\\image\\6.jpg"
+        image_7 = "C:\\Users\\PC\\Pictures\\image\\7.jpg"
+        image_8 = "C:\\Users\\PC\\Pictures\\image\\8.jpg"
+        image_9 = "C:\\Users\\PC\\Pictures\\image\\9.jpg"
+        image_10 = "C:\\Users\\PC\\Pictures\\image\\10.jpg"
+        image_11 = "C:\\Users\\PC\\Pictures\\image\\11.jpg"
+        image_12 = "C:\\Users\\PC\\Pictures\\image\\12.jpg"
+        image_13 = "C:\\Users\\PC\\Pictures\\image\\13.jpg"
+        image_14 = "C:\\Users\\PC\\Pictures\\image\\14.jpg"
+        image_15 = "C:\\Users\\PC\\Pictures\\image\\15.jpg"
+
+        choice_image = [image_1, image_2, image_3, image_4, image_5, image_6, image_7, image_8, image_9, image_10, image_11, image_12, image_13, image_14, image_15, ]
 
         # Account
-        email = "lehoangvidct@gmail.com"
-        password = "vole132465798"
+        email = "alireview.extension@fireapps.vn"
+        password = "123321"
         today = datetime.now()
-        time_str = today.strftime("%d%m%H%M%S")
-        product_name = "Product" + "-" + time_str
-        product_price = str(random.randint(1000000,99999999))
-        product_quantity = str(random.randint(1000,9000))
-        product_type = ['Product type 1', 'Product type 2', 'Product type 3']
+        # time_str = today.strftime("%d%m%H%M%S")
+        # product_name = "Product" + "-" + time_str
+        # product_price = str(random.randint(1000000,99999999))
+        # product_quantity = str(random.randint(1000,9000))
+        # product_type = ['Product type 1', 'Product type 2', 'Product type 3']
 
         products_Page = addProducts(driver)
         driver.get(url)
@@ -69,11 +88,21 @@ class createProducts(unittest.TestCase):
         products_Page.click_login_btn_shopify()
         sleep(2)
         # ERROR: Caught exception [ERROR: Unsupported command [resizeWindow | 1920,937 | ]]
-        for i in range(0, 3):
+        for i in range(0, 200):
+
+            today = datetime.now()
+            time_str = today.strftime("%d%m%H%M%S")
+            product_name = "Product" + "-" + time_str
+            product_price = str(random.randint(1000000,7000000))
+            product_quantity = str(random.randint(1000,9000))
+
+
             products_Page.click_product_btn_shopify()
             sleep(2)
             products_Page.click_add_product_btn_shopify()
             products_Page.set_fill_product_name_shopify(product_name)
+            sleep(2)
+            products_Page.set_add_photo_product(random.choice(choice_image))
             sleep(2)
             products_Page.set_fill_product_price_shopify(product_price)
             sleep(2)
