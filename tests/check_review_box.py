@@ -14,6 +14,7 @@ import unittest, time, re
 from pages.reviewbox_Page import checkReviewbox
 from selenium.webdriver import Chrome
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import Select
 from time import sleep
 from faker import Faker
 
@@ -47,66 +48,45 @@ class checkReview(unittest.TestCase):
 
             driver.get(url)
             driver.maximize_window()
-
             reviewbox_Page.set_fill_store_name(store_name)
             reviewbox_Page.click_login_btn()
-            sleep(3)
             reviewbox_Page.set_fill_store_email(store_email)
             reviewbox_Page.click_next_btn()
-            sleep(3)
             reviewbox_Page.set_fill_store_pass(store_pass)
             reviewbox_Page.click_login_btn_shopify()
-            sleep(3)
             reviewbox_Page.click_install_app_btn()
-            sleep(5)
             reviewbox_Page.click_choose_plan_btn()
-            sleep(5)
             reviewbox_Page.click_start_free_trial_btn()
-            sleep(10)
             driver.refresh()
-
             reviewbox_Page.click_get_review_btn()
-            sleep(2)
             reviewbox_Page.click_review_btn()
-            sleep(2)
             reviewbox_Page.click_import_review()
-            sleep(2)
             reviewbox_Page.select_csv_file_btn()
-            sleep(3)
             reviewbox_Page.set_add_csv_file(csv_file)
-            sleep(5)
             reviewbox_Page.click_go_to_settings_btn()
-            sleep(3)
             reviewbox_Page.click_import_reviews()
-            sleep(10)
             reviewbox_Page.click_view_product()
-            sleep(3)
             driver.switch_to.window(driver.window_handles[1])
-            sleep(2)
-            # driver.execute_script("window.open()")
-            # driver.switch_to.window(driver.window_handles[1])
-            # driver.get(product_url)
             driver.execute_script("window.scrollTo(0, window.scrollY + 700)")
             sleep(15) 
+            driver.switch_to.window(driver.window_handles[0])
+            reviewbox_Page.select_delete_review()
+            # Select(driver.find_element_by_xpath("//*[@id='product-item-5797444845735']/td[4]/div/select")).select_by_value('deleteAllReviewsModal')
+            reviewbox_Page.click_delete_reviews()
             driver.execute_script("window.open()")
             driver.switch_to.window(driver.window_handles[2])
             driver.get(store_admin)
-            # reviewbox_Page.set_fill_store_email(store_email)
-            # reviewbox_Page.click_next_btn()
-            # sleep(3)
-            # reviewbox_Page.set_fill_store_pass(store_pass)
-            # reviewbox_Page.click_login_btn_shopify()
             reviewbox_Page.click_apps()
             reviewbox_Page.click_apps()
             reviewbox_Page.select_delete_app()
-            sleep(3)
             reviewbox_Page.select_delete_app_confirm()
             sleep(10)
 
      
-    # def tearDown(self):
-        # self.driver.quit()
-        # self.assertEqual([], self.verificationErrors)
+    def tearDown(self):
+        self.driver.quit()
+        self.assertEqual([], self.verificationErrors)
+
 
 if __name__ == "__main__":
     unittest.main()

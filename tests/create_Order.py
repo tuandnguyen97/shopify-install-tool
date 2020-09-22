@@ -32,7 +32,7 @@ class addOrder(unittest.TestCase):
     def testcase_1(self):
         driver = self.driver
         # url = "https://store-billing-01.myshopify.com/collections/all"
-        url = "https://store-vile-05.myshopify.com/collections/all"
+        url = "https://store-vile-11.myshopify.com/collections/all"
         # Name
         # fake = Faker()
         # name = fake.name()
@@ -88,7 +88,7 @@ class addOrder(unittest.TestCase):
 
             driver.get(url)
             driver.maximize_window()
-            order_Page.click_select_product_2_btn()
+            order_Page.click_select_product_1_btn()
             order_Page.click_buy_now()
             order_Page.set_fill_name_phone(random.choice(name_phone))
             order_Page.set_fill_first_name(firstname)
