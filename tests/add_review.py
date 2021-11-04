@@ -31,7 +31,7 @@ class addReview(unittest.TestCase):
 
     def testcase_1(self):
         driver = self.driver
-        url = "https://thinhtest100.myshopify.com/products/test-1"
+        url = "https://store-vile-11.myshopify.com/products/product-0109175402"
 
         # image
         image_1 = "C:\\Users\\PC\\Downloads\\anh-gif-dong-dep_054757287.gif"
@@ -48,18 +48,28 @@ class addReview(unittest.TestCase):
 
         # Label: Test
         # ERROR: Caught exception [ERROR: Unsupported command [resizeWindow | 1920,937 | ]]
-        for i in range(0, 1):
+        for i in range(0, 10):
+            fake = Faker()
+            name = fake.name()
+            email = fake.ascii_free_email()
+            content = fake.paragraphs()
+
+            
             driver.get(url)
             driver.maximize_window()
+            sleep(4)
             review_Page.click_write_review_btn()
+            sleep(5)
+            review_Page.set_fill_review()
+            sleep(2)
             review_Page.set_fill_name(name)
             sleep(2)
             review_Page.set_fill_email(email)
             sleep(2)
             review_Page.set_fill_content(content)
             sleep(2)
-            review_Page.set_add_photo(random.choice(choice_image))
-            sleep(2)
+            # review_Page.set_add_photo(random.choice(choice_image))
+            # sleep(2)
             review_Page.click_add_review_btn()
             sleep(5)
      

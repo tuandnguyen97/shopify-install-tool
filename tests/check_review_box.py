@@ -80,7 +80,7 @@ class checkReview(unittest.TestCase):
             reviewbox_Page.click_apps()
             reviewbox_Page.select_delete_app()
             reviewbox_Page.select_delete_app_confirm()
-            sleep(10)
+            sleep(5)
 
      
     def tearDown(self):

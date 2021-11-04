@@ -32,35 +32,12 @@ class addOrder(unittest.TestCase):
     def testcase_1(self):
         driver = self.driver
         # url = "https://store-billing-01.myshopify.com/collections/all"
-        url = "https://store-vile-11.myshopify.com/collections/all"
-        # Name
-        # fake = Faker()
-        # name = fake.name()
-        # email = fake.ascii_free_email()
-        # content = fake.paragraphs()
-        # firstname = fake.first_name()
-        # lastname = fake.last_name()
-        # address = fake.street_address()
-        # city = fake.city()
-        # postalcode = "550000"
-
-        # # Phone
-        # rnd_value = str(random.randint(1000, 9000)) 
-        # phone = "+1201555"+ rnd_value
-        # # mail = fake.email()
-        # name_phone = [email, phone]
-
-        # # Card 
-        # number = 1
-        # namecard = "card test"
-        # month = 11
-        # year = 22
-        # code = 112
+        url = "https://store-vile-10.myshopify.com/collections/all"
 
         order_Page = createOrder(driver)
 
         # ERROR: Caught exception [ERROR: Unsupported command [resizeWindow | 1920,937 | ]]
-        for i in range(0, 500):
+        for i in range(0, 10):
 
             fake = Faker()
             name = fake.name()
@@ -72,11 +49,12 @@ class addOrder(unittest.TestCase):
             city = fake.city()
             postalcode = "550000"
 
+            
             # Phone
             rnd_value = str(random.randint(1000, 9000)) 
             phone = "+1201555"+ rnd_value
             # mail = fake.email()
-            name_phone = [email, phone]
+            name_phone = [phone]
 
             # Card 
             number = 1
@@ -85,10 +63,10 @@ class addOrder(unittest.TestCase):
             year = 22
             code = 112
 
-
+            # Create order
             driver.get(url)
             driver.maximize_window()
-            order_Page.click_select_product_1_btn()
+            order_Page.click_select_product_btn()
             order_Page.click_buy_now()
             order_Page.set_fill_name_phone(random.choice(name_phone))
             order_Page.set_fill_first_name(firstname)

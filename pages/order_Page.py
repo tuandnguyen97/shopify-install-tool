@@ -10,10 +10,11 @@ import random
 from pages.locators import *
 
 class createOrder:
+    randomNumber = random.randint(1, 32)
 
-    btn_product_1 = (By.XPATH, PRODUCT_1_XPATH)
-    btn_product_2 = (By.XPATH, PRODUCT_2_XPATH)
-    btn_product_3 = (By.XPATH, PRODUCT_3_XPATH)
+
+    # btn_product_1 = (By.XPATH, '//*[@id="Collection"]/ul[1]/li["+str(randomNumber)+"]/div/a')
+    btn_product = (By.XPATH, '//*[@id="Collection"]/ul[1]/li['+str(randomNumber)+']/div/a')
     btn_buy_it_now_btn = (By.XPATH, BUY_IT_NOW_BTN_XPATH)
     fill_name_phone = (By.XPATH, FILL_EMAIL_PHONE_XPATH)
     fill_first_name = (By.XPATH, FILL_FIRST_NAME_XPATH)
@@ -42,25 +43,16 @@ class createOrder:
         self.driver.get(self.URL)
 
     # create Order
-    def click_select_product_1_btn(self):
-        btn_product_1 = self.driver.find_element(*self.btn_product_1)
-        btn_product_1.click()
-        sleep(2)
-
-    def click_select_product_2_btn(self):
-        btn_product_2 = self.driver.find_element(*self.btn_product_2)
-        btn_product_2.click()
-        sleep(2)
-
-    def click_select_product_3_btn(self):
-        btn_product_3 = self.driver.find_element(*self.btn_product_3)
-        btn_product_3.click()        
+    def click_select_product_btn(self):
+        randomNumber = random.randint(1, 8)
+        btn_product = self.driver.find_element(By.XPATH, '//*[@id="Collection"]/ul[1]/li['+str(randomNumber)+']/div/a')
+        btn_product.click()
         sleep(2)
 
     def click_buy_now(self):
         btn_buy_it_now_btn = self.driver.find_element(*self.btn_buy_it_now_btn)
         btn_buy_it_now_btn.click()
-        sleep(1)
+        sleep(2)
 
     def click_next_btn(self):
         btn_next = self.driver.find_element(*self.btn_next)
@@ -122,6 +114,7 @@ class createOrder:
         self.driver.switch_to.frame(iframe_card_security)
         fill_security_card = self.driver.find_element(*self.fill_security_card)
         fill_security_card.send_keys(code)
+        sleep(1)
         self.driver.switch_to.parent_frame()
 
     

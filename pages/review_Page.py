@@ -16,6 +16,8 @@ class writeReview:
     fill_content = (By.ID, FILL_CONTENT_ID)
     add_photo = (By.XPATH, ADD_PHOTO_BTN_XPATH)
     btn_add_review = (By.XPATH, ADD_REVIEW_BTN_XPATH)
+    iframe_review = (By.XPATH, IFRAME_XPATH)
+    select_review = (By.XPATH, SELECT_REVIEW_XPATH)
 
     def __init__(self,driver):
         self.driver = driver
@@ -28,8 +30,14 @@ class writeReview:
 
     # Write Review
     def click_write_review_btn(self):
+        iframe_review = self.driver.find_element(*self.iframe_review)
+        self.driver.switch_to.frame(iframe_review)
         btn_write_review = self.driver.find_element(*self.btn_write_review)
         btn_write_review.click()
+
+    def set_fill_review(self):
+        select_review = self.driver.find_element(*self.select_review)
+        select_review.click()
 
     def set_fill_name(self, name):
         fill_name = self.driver.find_element(*self.fill_name)

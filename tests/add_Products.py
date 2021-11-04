@@ -77,7 +77,7 @@ class createProducts(unittest.TestCase):
         # product_name = "Product" + "-" + time_str
         # product_price = str(random.randint(1000000,99999999))
         # product_quantity = str(random.randint(1000,9000))
-        # product_type = ['Product type 1', 'Product type 2', 'Product type 3']
+        product_type = ['Sport', 'Normal', 'Man', 'Women']
 
         products_Page = addProducts(driver)
         driver.get(url)
@@ -88,15 +88,13 @@ class createProducts(unittest.TestCase):
         products_Page.click_login_btn_shopify()
         sleep(2)
         # ERROR: Caught exception [ERROR: Unsupported command [resizeWindow | 1920,937 | ]]
-        for i in range(0, 200):
+        for i in range(0, 500):
 
             today = datetime.now()
             time_str = today.strftime("%d%m%H%M%S")
             product_name = "Product" + "-" + time_str
             product_price = str(random.randint(1000000,7000000))
             product_quantity = str(random.randint(1000,9000))
-
-
             products_Page.click_product_btn_shopify()
             sleep(2)
             products_Page.click_add_product_btn_shopify()
@@ -108,6 +106,7 @@ class createProducts(unittest.TestCase):
             sleep(2)
             products_Page.set_fill_product_quantity_shopify(product_quantity)
             sleep(2)
+            products_Page.set_fill_product_type_shopify(random.choice(product_type))
             products_Page.click_save_product_btn_shopify()
             sleep(3)
             driver.get(url)
