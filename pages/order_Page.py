@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from time import sleep
 import random
-from pages.locators import *
+from Locator.locators import *
 
 class createOrder:
     randomNumber = random.randint(1, 32)
