@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.ui import Select
 from time import sleep
-from Locator.locators import *
+from Locators.locators import *
 
 class addReviewJudge:
 

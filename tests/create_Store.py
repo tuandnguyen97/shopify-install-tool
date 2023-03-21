@@ -19,13 +19,21 @@ from faker import Faker
 
 class CreateStoretrial(unittest.TestCase):
 
+ 
     def setUp(self):
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])        
         self.driver = webdriver.Chrome(ChromeDriverManager().install())
         # self.geckodriver_autoinstaller.install()
         # self.driver = webdriver.Firefox(GeckoDriverManager().install())
         self.driver.implicitly_wait(30)
         self.verificationErrors = []
         self.accept_next_alert = True
+
+    def tearDown(self) -> None:
+        return super().tearDown()
+        time.sleep(2)
+
 
     def testcase_1(self):
 
@@ -37,6 +45,7 @@ class CreateStoretrial(unittest.TestCase):
         content = fake.paragraphs()
         email = fake.ascii_free_email()
         password = '123321'
+        keyword = 'flash'
 
 
         #URL
@@ -47,17 +56,24 @@ class CreateStoretrial(unittest.TestCase):
         steps = CT(driver)
         driver.get(url)
         driver.maximize_window()
-        sleep(5) 
         steps.create_trial_btn()
-        sleep(5)
-        steps.click_next_btn()
-        sleep(5)
-        steps.click_next_btn()
-        sleep(5)
-        steps.click_next_btn()
-        sleep(5)
+        steps.click_next_btn_1()
+        steps.click_next_btn_1()
+        steps.click_next_btn_1()
         steps.fill_store_name(storename)
-        sleep(15)
+        steps.click_next_btn_2()
+        steps.click_next_btn_3()
+        steps.click_email_continue_btn()
+        steps.fill_email(email)
+        steps.fill_pass(password)
+        steps.click_create_shopify_id_btn()
+        steps.click_add_apps_btn()
+        steps.click_shopify_apps_store_btn()
+        driver.switch_to.window(driver.window_handles[1])
+        steps.fill_keyword(keyword)
+
+
+
        
 
 

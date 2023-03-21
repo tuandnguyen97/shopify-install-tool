@@ -9,7 +9,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 import random
-from Locator.locators import *
+from Locators.locators import *
 
 class checkReviewbox:
 
