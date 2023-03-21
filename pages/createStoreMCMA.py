@@ -25,7 +25,11 @@ class CreateTrialstore:
     btn_add_apps = (By.XPATH, ADD_APPS_BTN)
     btn_shopify_apps_store = (By.XPATH, SHOPIFY_APP_STORE_BTN)
     textbox_search_keyword = (By.XPATH, SEARCH_APPS_TEXTBOX)
+    iframe_review = (By.XPATH, IFRAME)
     page_btn = (By.XPATH, PAGE_BTN)
+    select_app = (By.XPATH, SELECT_APP)
+    btn_add_shopify_app = (By.XPATH, ADD_APP_SHOPIFY_BTN)
+    btn_install_app = (By.XPATH, INSTALL_APP_BTN)
 
 
     def __init__(self,driver):
@@ -95,7 +99,7 @@ class CreateTrialstore:
     def click_create_shopify_id_btn(self):
         btn_create_shopify_id = self.driver.find_element(*self.btn_create_shopify_id)
         btn_create_shopify_id.click()
-        sleep(60)
+        sleep(40)
 
     def click_add_apps_btn(self):
         btn_add_apps = self.driver.find_element(*self.btn_add_apps)
@@ -114,11 +118,24 @@ class CreateTrialstore:
         textbox_search_keyword.send_keys(keyword)
         sleep(2)
         textbox_search_keyword.send_keys(Keys.ENTER)
-        sleep(15)
+        sleep(5)
 
     def click_page_btn(self):
         page_btn = self.driver.find_element(*self.page_btn)
         page_btn.click()
         sleep(5)
 
-    
+    def click_select_app_install(self):
+        select_app = self.driver.find_element(*self.select_app)
+        select_app.click()
+        sleep(5)
+
+    def click_app_shopify(self):
+        btn_add_shopify_app = self.driver.find_element(*self.btn_add_shopify_app)
+        btn_add_shopify_app.click()
+        sleep(5)
+
+    def click_install_app_shopify(self):
+        btn_install_app = self.driver.find_element(*self.btn_install_app)
+        btn_install_app.click()
+        sleep(15)    
