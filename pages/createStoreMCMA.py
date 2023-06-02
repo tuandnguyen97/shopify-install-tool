@@ -138,4 +138,4 @@ class CreateTrialstore:
     def click_install_app_shopify(self):
         btn_install_app = self.driver.find_element(*self.btn_install_app)
         btn_install_app.click()
-        sleep(15)    
+        sleep(10)    

@@ -11,16 +11,23 @@ from datetime import datetime
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
-from pages.createStoreMCMA import CreateTrialstore as CT
+from pages.createStoreMCMA import CreateTrialstore
 from selenium.webdriver import Chrome
 from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
 from faker import Faker
+import pandas as pd
+import openpyxl
+import xlwt
+from xlsxwriter import Workbook
+import xlsxwriter 
+
 
 class CreateStoretrial(unittest.TestCase):
 
  
     def setUp(self):
+        print("==============[Start Test]============")
         options = webdriver.ChromeOptions()
         options.add_experimental_option('excludeSwitches', ['enable-logging'])        
         self.driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -37,66 +44,72 @@ class CreateStoretrial(unittest.TestCase):
 
     def testcase_1(self):
 
-        # Fake data
-        fake = Faker()
-
-        # Name store
-        name = fake.name()
-        firstname = fake.first_name()
-        lastname = fake.last_name()        
-        time_str = str(round(time.time() * 1000))
-        rnd_value = str(random.randint(1, 10000))
-        st1 = name + " " + time_str
-        st2 = firstname + lastname
-        st3 = firstname + " " + rnd_value
-        st4 = firstname + " " + time_str
-        st5 = lastname + " " + time_str
-        st6 = lastname + " " + rnd_value
-        store_name = [st1, st2, st3, st4, st5]
-
-        # Email
-        email = fake.ascii_free_email()
-
-        # Password
-        password = '123321'
-        keyword_1 = 'flash'
-        keyword_2 = 'FLASH'
-        keyword_3 = 'Flash'
-        key_word = [keyword_1, keyword_2, keyword_3]
 
         #URL
         driver = self.driver
-        # url = "https://shopify.com/"
-        url = "https://apps.shopify.com/"
+        url = "https://shopify.com/"
+        # url = "https://apps.shopify.com/"
 
         # CREATE STORE
-        for i in range(0, 10):
-            steps = CT(driver)
+        createStoreMCMA = CreateTrialstore(driver)
+
+        for i in range(0, 19):
+            
+            # Fake data
+            fake = Faker()
+
+            # Name store
+            name = fake.name()
+            firstname = fake.first_name()
+            lastname = fake.last_name()        
+            time_str = str(round(time.time() * 1000))
+            rnd_value = str(random.randint(1, 10000))
+            st1 = name + " " + time_str
+            st2 = firstname + lastname
+            st3 = firstname + " " + rnd_value
+            st4 = firstname + " " + time_str
+            st5 = lastname + " " + time_str
+            st6 = lastname + " " + rnd_value
+            store_name = [st1, st2, st3, st4, st5]
+
+            # Password
+            password = 'password@12345'
+            keyword_1 = 'flash sale'
+            keyword_2 = 'FLASH SALE'
+            keyword_3 = 'Flash Sale'
+            key_word = [keyword_1, keyword_2, keyword_3]
+
+            # Email
+            email = fake.ascii_free_email()
+
+            #Steps
             driver.get(url)
             driver.maximize_window()
-            # steps.create_trial_btn()
-            # steps.click_next_btn_1()
-            # steps.click_next_btn_1()
-            # steps.click_next_btn_1()
-            # steps.fill_store_name(random.choices(store_name))
-            # steps.click_next_btn_2()
-            # steps.click_next_btn_3()
-            # steps.click_email_continue_btn()
-            # steps.fill_email(email)
-            # steps.fill_pass(password)
-            # steps.click_create_shopify_id_btn()
-            # steps.click_add_apps_btn()
-            # steps.click_shopify_apps_store_btn()
-            # driver.switch_to.window(driver.window_handles[1])
-            steps.fill_keyword(random.choices(key_word))
-            # driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-            # driver.execute_script("window.scrollTo(0, window.scrollY + 1440)")
-            # sleep(5)
-            # steps.click_page_btn()
-            # steps.click_select_app_install()
-            # steps.click_app_shopify()
-            # steps.click_install_app_shopify()
-
+            createStoreMCMA.create_trial_btn()
+            createStoreMCMA.click_skip_btn()
+            # createStoreMCMA.click_next_btn_1()
+            # createStoreMCMA.click_next_btn_1()
+            # createStoreMCMA.fill_store_name(random.choices(store_name))
+            # createStoreMCMA.click_next_btn_2()
+            createStoreMCMA.click_next_btn_3()
+            createStoreMCMA.click_email_continue_btn()
+            createStoreMCMA.fill_email(email)
+            createStoreMCMA.fill_pass(password)
+            createStoreMCMA.click_create_shopify_id_btn()
+            createStoreMCMA.click_add_apps_btn()
+            createStoreMCMA.click_shopify_apps_store_btn()
+            driver.switch_to.window(driver.window_handles[1])
+            createStoreMCMA.fill_keyword(random.choices(key_word))
+            driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+            driver.execute_script("window.scrollTo(0, window.scrollY + 500)")
+            sleep(5)
+            # createStoreMCMA.click_page_btn()
+            createStoreMCMA.click_select_app_install()
+            createStoreMCMA.click_app_shopify()
+            createStoreMCMA.click_install_app_shopify()
+            sleep(5)
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
 
 
 
