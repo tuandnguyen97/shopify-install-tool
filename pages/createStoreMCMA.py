@@ -30,7 +30,7 @@ class CreateTrialstore:
     select_app = (By.XPATH, SELECT_APP)
     btn_add_shopify_app = (By.XPATH, ADD_APP_SHOPIFY_BTN)
     btn_install_app = (By.XPATH, INSTALL_APP_BTN)
-
+    btn_skip_help = (By.XPATH, SKIP_HELP_BTN)
 
     def __init__(self,driver):
         self.driver = driver
@@ -50,22 +50,28 @@ class CreateTrialstore:
         except Exception as err:
             print("Error {}".format(err))
 
-    def click_skip_btn(self):
+    def click_skip_all_btn(self):
+        print(f"step 3.1")
         btn_skip = self.driver.find_element(*self.btn_skip)
         btn_skip.click()
+        sleep(3)
+
+    def click_skip_help(self):
+        btn_skip_help = self.driver.find_element(*self.btn_skip_help)
+        btn_skip_help.click()
         sleep(3)
 
     def click_next_btn_1(self):
         btn_next_1 = self.driver.find_element(*self.btn_next_1)
         btn_next_1.click()
-        sleep(3)
+        sleep(5)
 
     def fill_store_name(self,storename):
         input_store_name = self.driver.find_element(*self.input_store_name)
         input_store_name.click()
         sleep(2)
         input_store_name.send_keys(storename)
-        sleep(5)   
+        sleep(3)   
 
     def click_next_btn_2(self):
         btn_next_2 = self.driver.find_element(*self.btn_next_2)
@@ -80,7 +86,7 @@ class CreateTrialstore:
     def click_email_continue_btn(self):
         btn_continue_email = self.driver.find_element(*self.btn_continue_email)
         btn_continue_email.click()
-        sleep(5)
+        sleep(3)
 
     def fill_email(self,email):
         input_email = self.driver.find_element(*self.input_email)
@@ -99,7 +105,7 @@ class CreateTrialstore:
     def click_create_shopify_id_btn(self):
         btn_create_shopify_id = self.driver.find_element(*self.btn_create_shopify_id)
         btn_create_shopify_id.click()
-        sleep(40)
+        sleep(10)
 
     def click_add_apps_btn(self):
         btn_add_apps = self.driver.find_element(*self.btn_add_apps)
@@ -109,7 +115,7 @@ class CreateTrialstore:
     def click_shopify_apps_store_btn(self):
         btn_shopify_apps_store = self.driver.find_element(*self.btn_shopify_apps_store)
         btn_shopify_apps_store.click()
-        sleep(5)
+        sleep(10)
 
     def fill_keyword(self,keyword):
         textbox_search_keyword = self.driver.find_element(*self.textbox_search_keyword)
@@ -133,9 +139,31 @@ class CreateTrialstore:
     def click_app_shopify(self):
         btn_add_shopify_app = self.driver.find_element(*self.btn_add_shopify_app)
         btn_add_shopify_app.click()
-        sleep(5)
+        sleep(10)
 
     def click_install_app_shopify(self):
         btn_install_app = self.driver.find_element(*self.btn_install_app)
         btn_install_app.click()
-        sleep(10)    
+        sleep(10)
+    
+    def is_exits_click_add_apps_btn(self):
+        try:
+            self.driver.find_element(*self.btn_add_apps)
+            return True
+        except NoSuchElementException:
+            return False
+
+    def is_exits_click_skip_help(self):
+        try:
+            self.driver.find_element(*self.btn_skip_help)
+            return True
+        except NoSuchElementException:
+            return False
+
+    def is_exits_click_email_continue_btn(self):
+        try:
+            self.driver.find_element(*self.btn_continue_email)
+            return True
+        except NoSuchElementException:
+            return False
+

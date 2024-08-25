@@ -1,15 +1,15 @@
-# ARAutomation
+# Install app
 <!-- Setting Selenium Python -->
-#pip install selenium
-#pip install webdriver-manager
-#pip install -U pytest
-#pip install Faker
-#python --version
-#pytest --version
+Install python: https://www.python.org/downloads/macos/
 
-<!-- Run -->
+pip3 install selenium
+pip3 install webdriver-manager
+pip3 install -U pytest
+pip3 install Faker
+pip3 --version
+python3 --version
+pytest3 --version
 
-#python -m pytest --count=10 .\tests\add_review.py
-##count: số lần add store
+<!-- Run test-->
 
-#python -m pytest .\tests\add_review.py
+python3 -m pytest -s tests/create_Store.py
