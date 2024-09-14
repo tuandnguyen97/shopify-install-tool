@@ -12,7 +12,12 @@ CREATE_SHOPIFY_ID_BTN = '//*[@id="submit-disable"]/button'
 ADD_APPS_BTN = '//button[contains(.,"Add apps")]'
 SHOPIFY_APP_STORE_BTN = '//a[@class="Polaris-Link Polaris-Link--removeUnderline" and contains(text(),"Shopify App Store")]' 
 SEARCH_APPS_TEXTBOX = '(//input[@type="search"])[1]'
-PAGE_BTN = '(//a[contains(text(),"3")])[3]'
+PAGE_3_BTN = '//*[@id="pagination_controls"]/div/section/section[contains(@class,"tw-hidden")]/div/a[3]'
+#pagination_controls > div > section > section.tw-hidden> div > a:nth-child(3)
+PAGE_6_BTN = '//*[@id="pagination_controls"]/div/section/section[contains(@class,"tw-hidden")]/div/a[7]'
+PAGE_8_BTN = '//*[@id="pagination_controls"]/div/section/section[contains(@class,"tw-hidden")]/div/a[7]'
+PAGE_9_BTN = '//*[@id="pagination_controls"]/div/section/section[contains(@class,"tw-hidden")]/div/a[6]'
+
 SELECT_APP = '//a[contains(text(),"Promofy: Flash sale & Discount")]'
 # SELECT_APP_NOT_AD = '//a[contains(text(),"PageFly Landing Page Builder") and not(contains(@href,"search_ad"))]'
 # SELECT_APP_AD = '//a[contains(text(),"PageFly Landing Page Builder") and (contains(@href,"search_ad"))]'
@@ -23,3 +28,6 @@ INSTALL_APP_BTN = '//*[@id="proceed_cta"]'
 
 IFRAME = '//*[@id="search_page"]'
 SKIP_HELP_BTN = '/html/body/div/div/div/div/div/div/div/div/div/button'
+
+All_APP = '//a'
+CREATE_ACCOUNT = '//button[@name="commit"]'

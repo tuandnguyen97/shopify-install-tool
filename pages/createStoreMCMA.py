@@ -5,6 +5,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+
 from time import sleep
 from Locators.createStore_MCMA_locator import *
 from selenium.webdriver.support import expected_conditions as EC
@@ -26,11 +28,16 @@ class CreateTrialstore:
     btn_shopify_apps_store = (By.XPATH, SHOPIFY_APP_STORE_BTN)
     textbox_search_keyword = (By.XPATH, SEARCH_APPS_TEXTBOX)
     iframe_review = (By.XPATH, IFRAME)
-    page_btn = (By.XPATH, PAGE_BTN)
+    page_3_btn = (By.XPATH, PAGE_3_BTN)
+    page_6_btn = (By.XPATH, PAGE_6_BTN)
+    page_8_btn = (By.XPATH, PAGE_8_BTN)
+    page_9_btn = (By.XPATH, PAGE_9_BTN)
     select_app = (By.XPATH, SELECT_APP)
     btn_add_shopify_app = (By.XPATH, ADD_APP_SHOPIFY_BTN)
     btn_install_app = (By.XPATH, INSTALL_APP_BTN)
     btn_skip_help = (By.XPATH, SKIP_HELP_BTN)
+    all_app = (By.XPATH, All_APP)
+    create_account = (By.XPATH, CREATE_ACCOUNT)
 
     def __init__(self,driver):
         self.driver = driver
@@ -100,8 +107,13 @@ class CreateTrialstore:
         input_pass.click()
         sleep(2)
         input_pass.send_keys(password)
-        sleep(5)  
+        sleep(10)  
 
+    def click_create_account(self):
+        create_account = self.driver.find_element(*self.create_account)
+        create_account.click()
+        sleep(10) 
+        
     def click_create_shopify_id_btn(self):
         btn_create_shopify_id = self.driver.find_element(*self.btn_create_shopify_id)
         btn_create_shopify_id.click()
@@ -126,9 +138,51 @@ class CreateTrialstore:
         textbox_search_keyword.send_keys(Keys.ENTER)
         sleep(5)
 
+    def search_app(self):
+        # self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        # self.driver.execute_script("window.scrollTo(0, window.scrollY + 800)")
+        # page_3_btn = self.driver.find_element(*self.page_3_btn)
+        # self.driver.execute_script("arguments[0].click();", page_3_btn)
+        # print('sang trang 3')
+        # sleep(5)
+        # self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        # self.driver.execute_script("window.scrollTo(0, window.scrollY + 800)")
+        # page_6_btn = self.driver.find_element(*self.page_6_btn)
+        # self.driver.execute_script("arguments[0].click();", page_6_btn)
+        # print('sang trang 6')
+        # sleep(5)
+        # self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        # self.driver.execute_script("window.scrollTo(0, window.scrollY + 800)")
+        # page_8_btn = self.driver.find_element(*self.page_8_btn)
+        # self.driver.execute_script("arguments[0].click();", page_8_btn)
+        # print('sang trang 8')
+        # sleep(5)
+        # self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        # self.driver.execute_script("window.scrollTo(0, window.scrollY + 800)")
+        # page_9_btn = self.driver.find_element(*self.page_9_btn)
+        # self.driver.execute_script("arguments[0].click();", page_9_btn)
+        # print('sang trang 9')
+        # sleep(5)
+        # Lấy URL hiện tại
+        current_url = self.driver.current_url
+        # Thêm hoặc sửa đổi tham số page=9
+        if "page=" not in current_url:
+            new_url = current_url + "&page=7"
+        else:
+            new_url = current_url.split("&page=")[0] + "&page=7"
+        # Chuyển hướng đến URL mới
+        self.driver.get(new_url)
+        sleep(5)
+        # elements = self.driver.find_elements(*self.all_app)
+        # for element in elements:
+        #     if "Promofy" in element.text:
+        #         print('find out')
+        #         self.driver.execute_script("arguments[0].click();", element)
+        # sleep(10)
+
     def click_page_btn(self):
-        page_btn = self.driver.find_element(*self.page_btn)
-        page_btn.click()
+        page_3_btn = self.driver.find_element(*self.page_3_btn)
+        page_3_btn.click()
         sleep(5)
 
     def click_select_app_install(self):
