@@ -12,4 +12,9 @@ pytest3 --version
 
 <!-- Run test-->
 
-python3 -m pytest -s tests/create_Store.py
+
+python3 -m pytest -s tests/kw_CTB.py
+
+python3 -m pytest -s tests/kw_Discount.py
+
+python3 -m pytest -s tests/kw_Flashsale.py
